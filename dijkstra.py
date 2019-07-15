@@ -10,7 +10,8 @@ poids=[["A","B",85],["A","C",217],["A","E",173],
         ["I","F",250],["I","J",84],
         ["J","E",502],["J","H",167],["J","I",84]]
 distances=[float("inf")]*len(sommets)
-depart,arrivee=input(),input()
+depart=input("Donnez le sommet de départ : ")
+arrivee=input("Donnez le sommet d'arrivée : ")
 
 predecesseur=[""]*len(sommets)
 distances[sommets.index(depart)]=0
@@ -24,11 +25,7 @@ def trouve_min(Q):
            sommet=s
     return sommet
 
-def maj_distances(s1,s2):
-    for arete in poids:
-        if arete[0]==s1 and arete[1]==s2:
-            poidsArete=arete[2]
-            break
+def maj_distances(s1,s2,poidsArete):
     if distances[sommets.index(s2)]>distances[sommets.index(s1)]+poidsArete:
            distances[sommets.index(s2)]=distances[sommets.index(s1)]+poidsArete
            predecesseur[sommets.index(s2)]=s1
@@ -39,7 +36,7 @@ while Q!=[]:
     Q.remove(s1)
     for arete in poids:
         if arete[0]==s1:
-            maj_distances(s1,arete[1])
+            maj_distances(s1,arete[1],arete[2])
 
 listeEtapes=[]
 s=arrivee
@@ -48,4 +45,4 @@ while s!=depart:
     s=predecesseur[sommets.index(s)]
 listeEtapes.append(depart)
 listeEtapes.reverse()
-print(listeEtapes)
+print(" -> ".join(listeEtapes))
