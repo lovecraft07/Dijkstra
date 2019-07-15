@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 sommets=("A","B","C","D","E","F","G","H","I","J")
 poids=[["A","B",85],["A","C",217],["A","E",173],
         ["B","A",85],["B","F",80],
